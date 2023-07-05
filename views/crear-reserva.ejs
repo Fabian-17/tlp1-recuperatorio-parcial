@@ -1,0 +1,49 @@
+<%- include('./partials/header') %>
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="row mb-2">
+            <div class="col-md-5">
+                <a href="/" id="btnRegresar" class="btn btn-sm btn-primary">Regresar</a>
+                <a href="/" class="btn btn-sm btn-info text-light">Inicio</a>
+            </div>
+        </div>
+
+        <div class="mx-auto col-sm-9 col-md-6 col-lg-5 col-xl-4">
+            <form id="formNuevaReserva" class="rounded border p-3" method="POST">
+                <h3 class="mb-3 text-center bg-primary text-light rounded p-2">Nueva Reserva</h3>
+                <div class="mb-3">
+                    <label class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    
+                </div>
+                <div class="mb-3">
+                   <label class="form-label">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido">
+                    
+                </div>
+                <div class="mb-3">
+                   <label class="form-label">Correo Electronico:</label> 
+                   <input type="email" class="form-control" id="email" name="email">
+                    
+                </div>
+                <div class="mb-3">
+                   <label class="form-label">Telefono:</label> 
+                   <input type="number" class="form-control" id="telefono" name="telefono">
+                    
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Que fecha realiza el viaje:</label> 
+                   <input type="datetime-local" class="form-control" id="fecha" name="fecha">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Cuantas personas realizan el viaje:</label> 
+                   <input type="number" class="form-control" id="cantidad_personas" name="cantidad_personas">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer') %>
