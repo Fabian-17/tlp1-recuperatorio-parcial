@@ -9,36 +9,40 @@
             </div>
         </div>
 
-        <div class="mx-auto col-sm-9 col-md-6 col-lg-5 col-xl-4">
+        <div class="mx-auto">
             <form id="formNuevaReserva" class="rounded border p-3" method="POST">
                 <h3 class="mb-3 text-center bg-primary text-light rounded p-2">Nueva Reserva</h3>
-                <div class="mb-3">
+                <div class="row">
+                <div class="col col-md-6 col-sm-12 mb-3">
                     <label class="form-label">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre">
                     
                 </div>
-                <div class="mb-3">
+                <div class="col col-md-6 col-sm-12 mb-3">
                    <label class="form-label">Apellido:</label>
                     <input type="text" class="form-control" id="apellido" name="apellido">
                     
                 </div>
-                <div class="mb-3">
+                <div class="row">
+                <div class="col col-md-6 col-sm-12 mb-3">
                    <label class="form-label">Correo Electronico:</label> 
                    <input type="email" class="form-control" id="email" name="email">
                     
                 </div>
-                <div class="mb-3">
+                
+                <div class="col col-md-6 col-sm-12 mb-3">
                    <label class="form-label">Telefono:</label> 
                    <input type="number" class="form-control" id="telefono" name="telefono">
                     
                 </div>
-                <div class="mb-3">
+                <div class="col col-md-6 col-sm-12 mb-3">
                   <label class="form-label">Que fecha realiza el viaje:</label> 
                    <input type="datetime-local" class="form-control" id="fecha" name="fecha">
                 </div>
-                <div class="mb-3">
+                <div class="col col-md-6 col-sm-12 mb-3">
                   <label class="form-label">Cuantas personas realizan el viaje:</label> 
                    <input type="number" class="form-control" id="cantidad_personas" name="cantidad_personas">
+                   <h6>El monto del viaje es de $3500 por persona</h6> 
                 </div>
 
                 <button type="submit" class="btn btn-primary">Guardar</button>
@@ -46,4 +50,7 @@
         </div>
     </div>
 </div>
+
+    <script src="/js/crear_reserva.js"></script>
+
 <%- include('./partials/footer') %>

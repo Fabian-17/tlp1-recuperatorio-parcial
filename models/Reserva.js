@@ -25,15 +25,9 @@ const reserva = sequelize.define('reserva', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    codigo: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true,
-    },
     cantidad_personas: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
     },
     fecha: {
         type: DataTypes.DATE,

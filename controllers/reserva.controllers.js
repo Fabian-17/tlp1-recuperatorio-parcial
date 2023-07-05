@@ -65,71 +65,63 @@ ctrlReservas.obtenerReserva = async (req, res) => {
 
 // Crear una reserva
 ctrlReservas.crearReserva = async (req, res) => {
-    const { nombre, apellido, email, fecha, telefono, cantidad_personas } = req.body;
+    const {
+        nombre,
+        apellido,
+        fecha,
+        cantidad_personas,
+        telefono,
+        email
+    } = req.body; // JSON.stringify(reserva);
 
     try {
-        const reserva = await Reserva.create({
+        // Se crea una nueva instancia de reserva
+        const nuevaReserva = new Reserva({
             nombre,
             apellido,
-            email,
             fecha,
+            cantidad_personas,
             telefono,
-            codigo: new Date().getTime(),
-            cantidad_personas
+            email,
+            codigo: new Date().getTime()
         });
 
-        if (!reserva) {
-            throw ({
-                status: 400,
-                message: 'No se pudo realizar la reserva'
-            })
-        }
+        // Se guarda en la BD
+        await nuevaReserva.save();
 
-        return res.json(reserva);
+        return res.status(201).json({ message: 'Reserva creada con éxito' })
     } catch (error) {
-        console.log(error);
-        return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
+        console.log('Error al crear la reserva', error);
+        return res.status(500).json({ message: 'Error al crear la reserva' })
     }
 }
-
 // Actualizar una reserva
 
 ctrlReservas.actualizarReserva = async (req, res) => {
-    const { id } = req.params;
-    const { nombre, apellido, email, fecha, telefono, cantidad_personas } = req.body;
-    
     try {
-        const reservaActualizada = await Reserva.update({
-            nombre,
-            apellido,
-            email,
-            fecha,
-            telefono,
-            cantidad_personas
-        }, {
-            where: {
-                id,
-                estado: true
-            }
-        });
+        const { id } = req.params;
+        const reserva = await Reserva.findByPk(id);
 
-        if (!reservaActualizada) {
-            throw ({
-                status: 400,
-                message: 'No se pudo actualizar la reserva'
-            })
+        console.log(reserva);
+
+        if (!reserva) {
+            return res.status(500).json(
+                {
+                    message:"Error"
+                })
         }
 
+        await reserva.update(req.body)
         return res.json({
-            message: 'Reserva actualizada correctamente',
-            reservaActualizada
-            
+            message: 'Reserva actualizada exitosamente'
         });
     } catch (error) {
-        return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
+        console.log('Error al actualizar la reserva', error);
+        return res.status(500).json({
+            message: 'Error al actualizar la reserva'
+        })
     }
 }
-
 // Eliminar una reserva de forma lógica
 
 ctrlReservas.eliminarReserva = async (req, res) => {

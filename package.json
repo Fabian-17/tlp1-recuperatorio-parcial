@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,8 @@
     "helmet": "^7.0.0",
     "morgan": "^1.10.0",
     "mysql2": "^3.4.5",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.32.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
