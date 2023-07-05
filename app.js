@@ -5,6 +5,16 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
 
+
+require('dotenv').config();
+
+
+const { sequelize } = require('./database');
+
+sequelize.authenticate()
+    .then(() => console.log('Conexión a base de datos exitosa'))
+    .catch((error) => console.log('Error al conectar a base de datos', error));
+
 const app = express();
 require('ejs');
 app.set('view engine', 'ejs');
@@ -38,4 +48,4 @@ app.use((req, res, next) => {
     </h1>`)
 });
 // Starting the server
-app.listen(45635, () => console.log('Server on port xxxx'));
+app.listen(port, console.log(`Servidor corriendo en http://localhost:${port}`));
